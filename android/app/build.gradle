@@ -46,7 +46,7 @@ android {
         applicationId "com.example.zoom"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -64,6 +64,9 @@ android {
 
 flutter {
     source '../..'
+}
+dependencies{
+    implementation platform('com.google.firebase:firebase-bom:33.1.2')
 }
 
 
