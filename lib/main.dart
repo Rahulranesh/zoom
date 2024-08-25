@@ -35,21 +35,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: StreamBuilder(
-        stream: AuthMethods().authChanges,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          if (snapshot.hasData) {
-            return HomeScreen();
-          }
-          return LoginScreen();
-        },
-      ),
+      home: HomeScreen(),
       title: 'Zoom ',
       debugShowCheckedModeBanner: false,
       routes: {

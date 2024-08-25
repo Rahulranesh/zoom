@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         elevation: 0,
         title: Text('Meet & Chat'),
@@ -29,8 +30,40 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Row(
-            children: [HomeButtonMeeting(onPressed: () {})],
-          )
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeButtonMeeting(
+                onPressed: () {},
+                text: 'New Meeting',
+                icon: Icons.videocam,
+              ),
+              HomeButtonMeeting(
+                onPressed: () {},
+                text: 'Join Meeting',
+                icon: Icons.add_box_rounded,
+              ),
+              HomeButtonMeeting(
+                onPressed: () {},
+                text: 'Schedule',
+                icon: Icons.calendar_today,
+              ),
+              HomeButtonMeeting(
+                onPressed: () {},
+                text: 'Share Screen',
+                icon: Icons.arrow_upward_rounded,
+              ),
+            ],
+          ),
+          Expanded(
+              child: Center(
+            child: Text(
+              'Create or Join Meeting with just a click !',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.grey),
+            ),
+          ))
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -40,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: onPageChanged,
           currentIndex: _page,
           unselectedFontSize: 14,
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(
