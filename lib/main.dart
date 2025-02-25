@@ -29,32 +29,31 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // Root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Zoom',
+      debugShowCheckedModeBanner: false,
       home: StreamBuilder(
         stream: AuthMethods().authChanges,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
-
           if (snapshot.hasData) {
-            return HomeScreen();
+            return const HomeScreen();
           }
-          return LoginScreen();
+          return const LoginScreen();
         },
       ),
-      title: 'Zoom ',
-      debugShowCheckedModeBanner: false,
       routes: {
-        '/login_screen': (context) => LoginScreen(),
-        '/home_screen': (context) => HomeScreen(),
+        '/login_screen': (context) => const LoginScreen(),
+        '/home_screen': (context) => const HomeScreen(),
       },
     );
   }

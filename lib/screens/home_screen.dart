@@ -4,7 +4,7 @@ import 'package:zoom/screens/history_meeting_screen.dart';
 import 'package:zoom/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -13,17 +13,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _page = 0;
 
-  onPageChanged(int page) {
+  void onPageChanged(int page) {
     setState(() {
       _page = page;
     });
   }
 
-  List<Widget> pages = [
+  final List<Widget> pages = [
     MeetingScreen(),
     HistoryMeetingScreen(),
-    const Text('Contacts'),
-    const Text('Settings'),
+    Center(child: Text('Contacts')),
+    Center(child: Text('Settings')),
   ];
 
   @override

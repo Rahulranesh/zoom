@@ -5,11 +5,12 @@ class HomeButtonMeeting extends StatelessWidget {
   final IconData icon;
   final String text;
   final VoidCallback onPressed;
-  const HomeButtonMeeting(
-      {super.key,
-      required this.onPressed,
-      required this.icon,
-      required this.text});
+  const HomeButtonMeeting({
+    Key? key,
+    required this.onPressed,
+    required this.icon,
+    required this.text,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class HomeButtonMeeting extends StatelessWidget {
                 BoxShadow(
                   blurRadius: 10,
                   color: Colors.black.withOpacity(0.06),
-                  offset: Offset(0, 4),
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
@@ -37,12 +38,10 @@ class HomeButtonMeeting extends StatelessWidget {
               size: 30,
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),

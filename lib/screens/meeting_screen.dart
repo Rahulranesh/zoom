@@ -3,7 +3,7 @@ import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 import 'package:zoom/widgets/home_button_meeting.dart';
 
 class MeetingScreen extends StatefulWidget {
-  const MeetingScreen({super.key});
+  const MeetingScreen({Key? key}) : super(key: key);
 
   @override
   State<MeetingScreen> createState() => _MeetingScreenState();
@@ -29,12 +29,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             HomeButtonMeeting(
-              onPressed: () => _createMeeting(),
+              onPressed: _createMeeting,
               text: 'New Meeting',
               icon: Icons.videocam,
             ),
             HomeButtonMeeting(
-              onPressed: () => _joinMeeting(),
+              onPressed: _joinMeeting,
               text: 'Join Meeting',
               icon: Icons.add_box_rounded,
             ),
@@ -50,7 +50,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
             ),
           ],
         ),
-        Expanded(
+        const Expanded(
           child: Center(
             child: Text(
               'Create or Join a Meeting with just a click!',
@@ -71,7 +71,8 @@ class _MeetingScreenState extends State<MeetingScreen> {
   }
 
   Future<void> _joinMeeting() async {
-    String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
+    String? serverUrl =
+        serverText.text.trim().isEmpty ? null : serverText.text;
 
     var options = JitsiMeetingOptions(
       roomNameOrUrl: roomText.text,

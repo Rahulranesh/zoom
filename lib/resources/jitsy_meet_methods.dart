@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:jitsi_meet_wrapper/jitsi_meet_wrapper.dart';
 
 class JitsiMeetPage extends StatefulWidget {
+  const JitsiMeetPage({Key? key}) : super(key: key);
+
   @override
-  _JitsiMeetPageState createState() => _JitsiMeetPageState();
+  State<JitsiMeetPage> createState() => _JitsiMeetPageState();
 }
 
 class _JitsiMeetPageState extends State<JitsiMeetPage> {
@@ -21,13 +23,11 @@ class _JitsiMeetPageState extends State<JitsiMeetPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Jitsi Meet Wrapper Test')),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: buildMeetConfig(),
-        ),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Jitsi Meet Wrapper Test')),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: buildMeetConfig(),
       ),
     );
   }
@@ -84,9 +84,9 @@ class _JitsiMeetPageState extends State<JitsiMeetPage> {
           const Divider(height: 48.0, thickness: 2.0),
           SizedBox(
             height: 64.0,
-            width: double.maxFinite,
+            width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => _joinMeeting(),
+              onPressed: _joinMeeting,
               child: const Text(
                 "Join Meeting",
                 style: TextStyle(color: Colors.white),
@@ -105,24 +105,25 @@ class _JitsiMeetPageState extends State<JitsiMeetPage> {
 
   void _onAudioOnlyChanged(bool? value) {
     setState(() {
-      isAudioOnly = value!;
+      isAudioOnly = value ?? false;
     });
   }
 
   void _onAudioMutedChanged(bool? value) {
     setState(() {
-      isAudioMuted = value!;
+      isAudioMuted = value ?? false;
     });
   }
 
   void _onVideoMutedChanged(bool? value) {
     setState(() {
-      isVideoMuted = value!;
+      isVideoMuted = value ?? false;
     });
   }
 
   Future<void> _joinMeeting() async {
-    String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
+    String? serverUrl =
+        serverText.text.trim().isEmpty ? null : serverText.text;
 
     Map<String, Object> featureFlags = {};
 
@@ -186,7 +187,8 @@ class _JitsiMeetPageState extends State<JitsiMeetPage> {
             "isPrivate: $isPrivate",
           );
         },
-        onChatToggled: (isOpen) => debugPrint("onChatToggled: isOpen: $isOpen"),
+        onChatToggled: (isOpen) =>
+            debugPrint("onChatToggled: isOpen: $isOpen"),
         onClosed: () => debugPrint("onClosed"),
       ),
     );

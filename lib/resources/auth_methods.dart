@@ -17,7 +17,7 @@ class AuthMethods {
 
       if (googleUser == null) {
         // The user canceled the sign-in
-        showSnackNar(context, "Google sign-in was canceled.");
+        showSnackBar(context, "Google sign-in was canceled.");
         return res;
       }
 
@@ -25,7 +25,7 @@ class AuthMethods {
           await googleUser.authentication;
 
       if (googleAuth.idToken == null && googleAuth.accessToken == null) {
-        showSnackNar(
+        showSnackBar(
             context, "Authentication failed. Missing Google Auth Token.");
         return res;
       }
@@ -51,9 +51,9 @@ class AuthMethods {
         res = true;
       }
     } on FirebaseAuthException catch (e) {
-      showSnackNar(context, "Firebase Auth Error: ${e.message}");
+      showSnackBar(context, "Firebase Auth Error: ${e.message}");
     } catch (e) {
-      showSnackNar(context, "An unexpected error occurred. Please try again.");
+      showSnackBar(context, "An unexpected error occurred. Please try again.");
       print('Error during Google Sign-In: $e');
     }
     return res;
