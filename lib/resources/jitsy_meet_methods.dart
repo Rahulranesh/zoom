@@ -205,7 +205,7 @@ class _JitsiMeetPageState extends State<JitsiMeetPage> {
         border: const OutlineInputBorder(),
         labelText: labelText,
         hintText: hintText,
-      ),
+      )
     );
   }
 }
