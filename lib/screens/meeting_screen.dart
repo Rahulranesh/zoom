@@ -59,7 +59,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                 fontSize: 18,
                 color: Colors.grey,
               ),
-            ),
+            )
           ),
         ),
       ],
